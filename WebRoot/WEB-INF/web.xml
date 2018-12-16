@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">  
+<web-app>
+  <servlet>
+    <servlet-name>RegServlet</servlet-name>
+    <servlet-class>jxau.vip.ui.servlet.RegServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>DoRegServlet</servlet-name>
+    <servlet-class>jxau.vip.ui.servlet.DoRegServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>DoLoginServlet</servlet-name>
+    <servlet-class>jxau.vip.ui.servlet.DoLoginServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>jxau.vip.ui.servlet.LoginServlet</servlet-class>
+  </servlet>
+
+
+
+
+  <servlet-mapping>
+    <servlet-name>RegServlet</servlet-name>
+    <url-pattern>/RegServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DoRegServlet</servlet-name>
+    <url-pattern>/DoRegServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DoLoginServlet</servlet-name>
+    <url-pattern>/DoLoginServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/LoginServlet</url-pattern>
+  </servlet-mapping>
+  
+ <filter>
+         <filter-name>EncodeFilter</filter-name>
+         <filter-class>jxau.vip.ui.filter.EncodeFilter</filter-class>
+             <init-param>
+      <param-name>enc</param-name>
+      <param-value>utf-8</param-value>
+    </init-param>
+ </filter>
+   <filter-mapping>
+    <filter-name>EncodeFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping> 
+  <filter>
+          <filter-name>AutoLoginFilter</filter-name> 
+          <filter-class>jxau.vip.ui.filter.AutoLoginFilter</filter-class>  
+  </filter>
+  <filter-mapping>
+            <filter-name>AutoLoginFilter</filter-name>  
+            <url-pattern>/*</url-pattern>
+  </filter-mapping>
+ 
+</web-app>
