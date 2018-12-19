@@ -24,7 +24,7 @@ public interface BaseDao {
 	//UserQueryModel  SubjectQueryModel
 	public List findByCondition(BaseQueryModel queryModel) throws Exception;
 	
-		
+	public Long findId() throws Exception;
 	
 	//TODO £∫±‡–¥≤È—Ø∑Ω∑®
 	}

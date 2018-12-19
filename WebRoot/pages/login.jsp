@@ -45,9 +45,9 @@ window.onload = function(){
 			<form method="post" action="${pageContext.request.contextPath}/DoLoginServlet">
 				<dl id="loginBox">
 					<dt>用户名：</dt>
-					<dd><input type="text" class="input-text" name="name"  value="1990"/></dd>
+					<dd><input type="text" class="input-text" name="name"  value="${user.name}"/></dd>
 					<dt>密　码：</dt>
-					<dd><input type="password" class="input-text" name="pwd"  value="123456"/></dd>
+					<dd><input type="password" class="input-text" name="pwd"  value="${user.pwd}"/></dd>
 					<dt></dt>
 					<dd><input type="checkbox"  name="remember"  value="1"/>10天内免登录</dd>
 					<dt></dt>

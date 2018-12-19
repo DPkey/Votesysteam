@@ -17,6 +17,16 @@
     <servlet-name>LoginServlet</servlet-name>
     <servlet-class>jxau.vip.ui.servlet.LoginServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>DoAddServlet</servlet-name>
+    <servlet-class>jxau.vip.ui.servlet.DoAddServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AddServlet</servlet-name>
+    <servlet-class>jxau.vip.ui.servlet.AddServlet</servlet-class>
+  </servlet>
+
+
 
 
 
@@ -37,6 +47,14 @@
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/LoginServlet</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DoAddServlet</servlet-name>
+    <url-pattern>/m/DoAddServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddServlet</servlet-name>
+    <url-pattern>/m/AddServlet</url-pattern>
+  </servlet-mapping>
   
  <filter>
          <filter-name>EncodeFilter</filter-name>
@@ -50,6 +68,7 @@
     <filter-name>EncodeFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping> 
+  
   <filter>
           <filter-name>AutoLoginFilter</filter-name> 
           <filter-class>jxau.vip.ui.filter.AutoLoginFilter</filter-class>  
@@ -57,6 +76,15 @@
   <filter-mapping>
             <filter-name>AutoLoginFilter</filter-name>  
             <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <filter>
+          <filter-name>TransFilter</filter-name>
+          <filter-class>jxau.vip.ui.filter.TransFilter</filter-class>
+  </filter>
+  <filter-mapping>
+            <filter-name>TransFilter</filter-name>
+            <url-pattern>*.do</url-pattern>
   </filter-mapping>
  
 </web-app>

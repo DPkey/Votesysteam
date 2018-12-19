@@ -39,7 +39,7 @@ public class DoLoginServlet extends HttpServlet {
             		cookie.setMaxAge(10*24*60*60);
             		response.addCookie(cookie);
             	}
-            	response.sendRedirect(request.getContextPath()+"/list");
+            	response.sendRedirect(request.getContextPath()+"/pages/list.jsp");
             	
 				
 			} catch (RuleException re) {

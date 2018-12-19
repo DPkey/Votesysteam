@@ -32,7 +32,7 @@ public abstract class BaseDaoImpl implements BaseDao {
 		//4 处理执行的结果：ResultSet结果集
 		//   结果集中的记录转换成实体类对象
 		//5 释放资源(关闭连接)
-		DbHelper.closeAll(con, pst, null);
+		DbHelper.closeAll(null, pst, null);
 		return rows;
 	}
 	public List findAll() throws Exception{
@@ -45,20 +45,20 @@ public abstract class BaseDaoImpl implements BaseDao {
 			Object data = rsToObject(rs);
 			list.add(data);
 		}
-		DbHelper.closeAll(con, pst, rs);
+		DbHelper.closeAll(null, pst, null);
 		return list;
 		
 	}
 	public Object findOne(int id) throws Exception {
 		Connection con=DbHelper.getConnection();
-		String sql=getFindAllSql()+"where id ="+id;
+		String sql=getFindAllSql()+" where id ="+id;
 		PreparedStatement pst=con.prepareStatement(sql);
 		ResultSet rs=pst.executeQuery();
 		Object result=null;
 		if(rs.next()){
 			result = rsToObject(rs);
 		}
-		DbHelper.closeAll(con, pst, rs);
+		DbHelper.closeAll(null, pst, null);
 		
 		return result;
 	}
@@ -82,7 +82,7 @@ public abstract class BaseDaoImpl implements BaseDao {
 		}
 
 		// 5 释放资源(关闭连接)
-		DbHelper.closeAll(con, pst, rs);
+		DbHelper.closeAll(null, pst, null);
 
 		return list;
 	}
@@ -101,7 +101,7 @@ public abstract class BaseDaoImpl implements BaseDao {
 				// 4 处理执行的结果：ResultSet结果集
 				// 结果集中的记录转换成实体类对象
 				// 5 释放资源(关闭连接)
-				DbHelper.closeAll(con, pst, null);
+				DbHelper.closeAll(null, pst, null);
 				return rows;
     
 	}
@@ -120,9 +120,29 @@ public abstract class BaseDaoImpl implements BaseDao {
 		// 4 处理执行的结果：ResultSet结果集
 		// 结果集中的记录转换成实体类对象
 		// 5 释放资源(关闭连接)
-		DbHelper.closeAll(con, pst, null);
+		DbHelper.closeAll(null, pst, null);
 		return rows;
 	}
+	public Long findId() throws Exception {
+		// 1 创建数据库连接对象Connection
+		Connection con = DbHelper.getConnection();
+		// 2 编写sql语句，创建命令对象PreparedStatement
+		String sql = "SELECT LAST_INSERT_ID() as maxid";
+		PreparedStatement pst = con.prepareStatement(sql);
+
+		// 3 执行命令：executeUpdate ,executeQuery
+		ResultSet rs = pst.executeQuery();
+		// 4 处理执行的结果：ResultSet结果集
+		// 结果集中的记录转换成实体类对象
+		Long result = null;
+		if (rs.next()) {
+			result = rs.getLong("maxid");
+		}
+		DbHelper.closeAll(null, pst,null);
+
+		return result;
+	}
+	//sql语句子类实现
 	public abstract String getInsertSql(Object data);
 	public abstract String getFindAllSql();
 	public abstract Object rsToObject(ResultSet rs) throws Exception;

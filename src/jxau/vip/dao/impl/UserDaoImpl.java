@@ -49,7 +49,6 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 		if(qm.getOnline()>0){
 			sb.append("and online="+qm.getOnline());
 		}
-		System.out.println("!!!!!!!!!!!!"+sb.toString());
 		return sb.toString();
 	}
 	@Override

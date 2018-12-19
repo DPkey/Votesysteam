@@ -9,6 +9,9 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.sun.mail.iap.Response;
 
 import jxau.vip.until.filter.MyRequest;
 
@@ -26,6 +29,7 @@ public class EncodeFilter implements Filter {
 			throws IOException, ServletException {
 		// TODO Auto-generated method stub
 		HttpServletRequest request =(HttpServletRequest) req;
+		HttpServletResponse response =(HttpServletResponse)res;
 		
 		req.setCharacterEncoding(encode);
 		req.setCharacterEncoding(encode);
@@ -36,7 +40,7 @@ public class EncodeFilter implements Filter {
 			req=mr;
 		}
 		
-		chain.doFilter(req,res);
+		chain.doFilter(request,response);
 		
 	}
 

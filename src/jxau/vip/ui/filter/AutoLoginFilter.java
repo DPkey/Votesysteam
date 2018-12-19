@@ -45,19 +45,19 @@ public class AutoLoginFilter implements Filter {
 		    			UserService userService = new UserServiceImpl();
 		    			try {
 							User user= userService.getUser(id);
+							
 							session.setAttribute(user.SESSION_NAME, user);
 						} catch (Exception e) {
-							throw new RuntimeException();
+							throw new RuntimeException(e);
 						}
 		    		}
 		    	}
-		    	chain.doFilter(request, response);
 		    }
 		    
 		   
 	   }
 		
-		
+	   chain.doFilter(request, response);
 		
 		// TODO Auto-generated method stub
 		
